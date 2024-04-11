@@ -63,7 +63,7 @@ version = "=20.1.1"
 default-features = false
 features = ["curr"]
 git = "https://github.com/HashCash-Consultants/rs-hcnet-xdr"
-rev = "bb9eef6c2807f8504b983a8e1230a9c753bb6b14"
+rev = "a500e15840377b238d34645937aa66dd50abed4b"
 
 #[patch."https://github.com/hcnet/rs-soroban-env"]
 #soroban-env-common = { path = "../rs-soroban-env/soroban-env-common" }
