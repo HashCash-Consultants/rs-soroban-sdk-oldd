@@ -1,0 +1,91 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "soroban-sdk",
+    "soroban-sdk-macros",
+    "soroban-spec",
+    "soroban-spec-rust",
+    "soroban-ledger-snapshot",
+    "soroban-token-sdk",
+    "tests/empty",
+    "tests/empty2",
+    "tests/add_u64",
+    "tests/add_i128",
+    "tests/add_u128",
+    "tests/import_contract",
+    "tests/invoke_contract",
+    "tests/udt",
+    "tests/contract_data",
+    "tests/events",
+    "tests/logging",
+    "tests/errors",
+    "tests/alloc",
+    "tests/auth",
+    "tests/fuzz",
+    "tests/multiimpl",
+    "tests/workspace_contract",
+    "tests/workspace_lib",
+]
+
+[workspace.package]
+version = "20.5.0"
+rust-version = "1.74.0"
+
+[workspace.dependencies]
+soroban-sdk = { version = "20.5.0", path = "soroban-sdk" }
+soroban-sdk-macros = { version = "20.5.0", path = "soroban-sdk-macros" }
+soroban-spec = { version = "20.5.0", path = "soroban-spec" }
+soroban-spec-rust = { version = "20.5.0", path = "soroban-spec-rust" }
+soroban-ledger-snapshot = { version = "20.5.0", path = "soroban-ledger-snapshot" }
+soroban-token-sdk = { version = "20.5.0", path = "soroban-token-sdk" }
+
+[workspace.dependencies.soroban-env-common]
+version = "=20.3.0"
+git = "https://github.com/HashCash-Consultants/rs-soroban-env"
+rev = "d838055f12d2ade70954a624e24430371c546893"
+
+[workspace.dependencies.soroban-env-guest]
+version = "=20.3.0"
+git = "https://github.com/HashCash-Consultants/rs-soroban-env"
+rev = "d838055f12d2ade70954a624e24430371c546893"
+
+[workspace.dependencies.soroban-env-host]
+version = "=20.3.0"
+git = "https://github.com/HashCash-Consultants/rs-soroban-env"
+rev = "d838055f12d2ade70954a624e24430371c546893"
+
+[workspace.dependencies.hcnet-strkey]
+version = "=0.0.8"
+
+[workspace.dependencies.hcnet-xdr]
+version = "=20.1.0"
+default-features = false
+features = ["curr"]
+git = "https://github.com/HashCash-Consultants/rs-hcnet-xdr"
+rev = "bb9eef6c2807f8504b983a8e1230a9c753bb6b14"
+
+#[patch."https://github.com/hcnet/rs-soroban-env"]
+#soroban-env-common = { path = "../rs-soroban-env/soroban-env-common" }
+#soroban-env-guest = { path = "../rs-soroban-env/soroban-env-guest" }
+#soroban-env-host = { path = "../rs-soroban-env/soroban-env-host/" }
+#[patch."https://github.com/hcnet/rs-hcnet-xdr"]
+#hcnet-xdr = { path = "../rs-hcnet-xdr/" }
+
+[profile.dev]
+overflow-checks = true
+panic = "abort"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+[profile.release-with-logs]
+inherits = "release"
+debug-assertions = true

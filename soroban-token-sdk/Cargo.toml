@@ -1,0 +1,18 @@
+[package]
+name = "soroban-token-sdk"
+description = "Soroban token SDK containing utilities for creating custom tokens on Soroban."
+homepage = "https://github.com/HashCash-Consultants/rs-soroban-sdk"
+repository = "https://github.com/HashCash-Consultants/rs-soroban-sdk"
+authors = ["Hcnet Development Foundation <info@hcnet.org>"]
+readme = "../README.md"
+license = "Apache-2.0"
+version.workspace = true
+edition = "2021"
+rust-version.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
